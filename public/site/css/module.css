@@ -1,0 +1,165 @@
+
+.module {
+    height: 100%;
+    text-align: center;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-image: url('../img/module/bg-cloud.png');
+    background-size: cover;
+}
+
+.module .module-box {
+    background-color: #fff;
+    width: 100%;
+    margin-top: 83%;
+    box-shadow: 0 1px 3px #505050;
+}
+
+.module .module-box h3 {
+    margin-top: -150px;
+    background-color: #0a4b92;
+    color: #fff;
+    padding: 8px;
+    font-weight: bold;
+    margin-bottom: 0;
+    box-shadow: inset 0 9px 12px #004c9c;
+}
+
+.module .module-box .fas {
+    color: #D05B00;
+    font-weight: bold;
+}
+
+.module .module-box ul {
+    line-height: 1.9;
+    margin: auto;
+    display: inline-block;
+    padding: 7px;
+}
+
+.module .module-box ul li {
+    color: #8c8c8c;
+}
+
+.module .module-box h5 {
+    color: #004085;
+    font-weight: bold;
+}
+
+.module .module-box .btn {
+    background-color: #105298;
+    color: #fff;
+    width: 85%;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: inset 0 1px 1px #055ab5;
+    border-radius: 0;
+    text-transform: uppercase;
+    border-radius: 100px;
+    transition:  all 0.3s ease-in-out;
+}
+
+.module .module-box .btn:hover {
+    background-color: #D05B00;
+    box-shadow: inset 0 1px 1px #D05B00;    
+}
+
+.module .module-box-2 {
+    margin-top: 6%;  
+} 
+
+.module .module-box-3 {
+    margin-top: 14%;
+}
+
+.module .module-box-4 {
+    margin-top: 20%;
+}
+
+.module .img-1 {
+    position: absolute;
+    left: -5%;
+    bottom: 25%;
+}
+
+.module .img-2 {
+    position: absolute;
+    top: 5%;
+}
+
+.module .img-3 {
+    position: absolute;
+    right: 46%;
+    margin-top: 39%;
+    z-index: 1;
+    width: 200px;
+}
+
+.module .img-4 {
+    position: absolute;
+    bottom: -11%;    
+    left: 16%;
+    width: 188px;
+    z-index: 1;
+}
+
+.module .img-5 {
+    position: absolute;
+    left: 9%;
+    width: 479px;
+    bottom: 24%;
+}
+
+.module .img-6 {
+    position: absolute;
+    left: 13%;
+    width: 271px;
+    bottom: -15%;
+    z-index: 1;
+}
+
+.module .img-7 {
+    position: absolute;
+    bottom: 11%;
+    left: 56%;
+}
+
+.module .img-8 {
+    position: absolute;
+    width: 400px;
+    top: 14%;
+    left: 49%;
+}
+
+
+/* Respomsive */
+
+@media screen and (max-width:780px) {
+    .module .module-box-2 {
+        margin-top: -36%;
+    }
+
+    .module .module-box-3 {
+        margin-top: -15%;
+    }
+
+    .module .module-box-4 {
+        margin-top: -38%;
+    }
+
+    .module .img-6 {
+        width: 341px;
+        top: 160%;
+    }
+
+    .module .img-5 {
+        width: 327px;
+        bottom: -323px;
+        left: 14%;
+    }
+
+    .module .img-2 {
+        top: 290%;
+        left: 1%;
+    }
+}

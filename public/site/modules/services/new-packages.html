@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> </title>
+        <meta charset="utf-8">
+           <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+           <meta name="viewport" content="width=device-width, initial-scale=1" />
+           <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
+           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+             .new-packages-section .services
+            {
+                border:1px solid;
+                border-radius: 5px;
+                display: inline-block;
+                text-transform: capitalize;
+                margin: 5px;
+                cursor: pointer;
+            }
+            .new-packages-section .all-new-services
+            {
+                margin: 30px auto;
+            }
+            .new-packages-section .services .icon
+            {
+                  width: 125px;
+                  height: 125px;
+                  margin: 3px;
+                  color: white;
+                  display: table;
+                  border: 1px solid #efefef;
+                  border-radius: 5px;
+                  -webkit-transition:ease all 0.8s;
+                  transition: ease all 0.8s;
+            }
+            .new-packages-section .services .icon p
+            {
+                font-weight: bold;
+                font-size: 18px;
+            }
+            .new-packages-section .services .icon i
+            {
+                  margin:auto;
+                  margin-top: 13px;
+                  margin-bottom: 3px;
+                  display: block;
+                  width: 100px;
+                  text-align: center;
+            }
+            .new-packages-section .services .icon span strong
+            {
+                display: block;
+            }
+            .new-packages-section .service-blue
+            {
+                border-color: #009ddc;
+            }
+            .new-packages-section .service-blue .icon
+            {
+                background: #009ddc;
+            }
+            .new-packages-section .service-black
+            {
+                border-color: #1e252b;
+            }
+            .new-packages-section .service-black .icon
+            {
+                background: #1e252b;
+            }
+            .new-packages-section .service-green
+            {
+                border-color: #19bb48;
+            }
+            .new-packages-section .service-green .icon
+            {
+                background: #19bb48;
+            }
+            .new-packages-section .service-purple
+            {
+                border-color: #9a59b5;
+            }
+            .new-packages-section .service-purple .icon
+            {
+                background: #9a59b5;
+            }
+            .new-packages-section .service-red
+            {
+                border-color:#ea2939;
+            }
+            .new-packages-section .service-red .icon
+            {
+                background: #ea2939;
+            }
+             .new-packages-section .service-yellow
+            {
+                border-color:#ECC60B;
+            }
+            .new-packages-section .service-yellow .icon
+            {
+                background: #ECC60B;
+            }
+            .new-packages-section .services .icon .showing
+            {
+                margin-top: 30px;
+                display: none;
+                font-size: 18px;
+                font-weight: 900;
+            }
+             .new-packages-section .services:hover .icon, 
+             .new-packages-section .services:focus .icon 
+            {
+                transform: scale(0.9)
+            }
+             .new-packages-section .services:hover .hidding,
+             .new-packages-section .services:focus .hidding
+            {
+                display: none;
+            }
+             .new-packages-section .services:hover .showing,
+             .new-packages-section .services:focus .showing
+            {
+                display: block
+            }
+             .new-packages-section .nav-pills>a:hover,
+             .new-packages-section .nav-pills>a:focus
+            {
+                text-decoration: none;
+            }
+             .selected-service .row 
+            {
+                margin:0 -15px 30px;
+                margin-top: 30px;
+            }
+            .selected-service .row .col
+            {
+                padding: 0 20px;
+                margin-bottom: 20px;
+            }
+            .selected-service .row .col .choose
+            {
+                position: absolute;
+                top: -13px;
+                left: 0;
+                right: 0;
+                margin: auto;
+                width: 28px;
+                height: 28px;
+                background-color: #ffffff;
+                z-index: 1;
+                color: #D7D7D7;
+                font-size: 1em;
+                cursor: pointer;
+            }
+            .selected-service .row .col .total-price
+            {
+                padding: 10px 0;
+                display: block;
+                height: 90px;
+                background-color: #ffffff;
+                text-align: center;
+                position: relative;
+                border-radius: 8px 8px 0 0;
+                border: solid 1px #cadcd9;
+                cursor: pointer;
+                overflow: hidden;
+            }
+             .selected-service .row .col .total-price p
+            {
+                font-size: 1.6em;
+                margin-bottom: 0;
+                color: #1E252B;
+            }
+            .selected-service .row .col .total-price span
+            {
+                position: absolute;
+                bottom: -50%;
+                left: 0;
+                right: 0;
+                margin: auto;
+                width: 85%;
+                max-width: 110px;
+                height: 100%;
+                line-height: 50px;
+                overflow: hidden;
+                font-weight: 700;
+                font-size: 1.300em;
+                background-color: #009ddc;
+                color: #ffffff;
+                border-radius: 50%;
+            }
+            .selected-service .checkbox label
+            {
+                color: black;
+                font-weight: 400;
+            }
+             .selected-service .checkbox label a
+            {
+                text-decoration: underline;
+                color: #530C07;
+                white-space: nowrap;
+            }
+            .selected-service .checkbox label p
+            {
+                color: #BB352C;
+                line-height: 1.7;
+            }
+            .selected-service .checkbox label span
+            {
+                padding: 5px;
+                background:  #009ddc;
+                border-radius: 5px;
+                color: white;
+            }
+            .selected-service
+            {
+                background: #f9f9f9;
+                padding: 15px;
+                min-height: 135px;
+                border-radius: 0 0 25px 25px;
+                border: 2px solid #d9d9d9;
+                text-align: justify;
+            }
+             .new-packages-section .tab-content #black ul li
+            {
+                border-bottom: 1px solid #ccc;
+                padding: 10px;
+            }
+            .new-packages-section .tab-content #black ul li:last-of-type
+            {
+                border: none;
+            }
+            .new-packages-section .tab-content #black p
+            {
+                margin: 0 25px 10px;
+            }
+            .new-packages-section .tab-content #green .selected-service
+            {
+                padding: 10px 25px;
+            }
+            .new-packages-section .tab-content .selected-service .checkbox+.checkbox,
+            .new-packages-section .tab-content .selected-service .radio+.radio
+            {
+               margin-top: 0; 
+            }
+            .new-packages-section .tab-content #green .selected-service .checkbox span
+            {
+                padding: 5px;
+                color: white;
+                background: #19bb48;
+                border-radius: 5px;
+            }
+            .new-packages-section .tab-content #purple .selected-service .radio span
+            {
+                padding: 5px;
+                color: white;
+                background: #9a59b5;
+                border-radius: 5px;
+            }
+             .new-packages-section .tab-content #purple .selected-service .radio p
+            {
+                color: #BB352C;
+                line-height: 1.8;
+            }
+            .new-packages-section .tab-content #red .selected-service .radio span
+            {
+                padding: 5px;
+                color: white;
+                background: #ea2939;
+                border-radius: 5px;
+            }
+             .new-packages-section .tab-content #yellow .selected-service .checkbox span
+            {
+                padding: 5px;
+                color: white;
+                background:#ECC60B;
+                border-radius: 5px;
+            }
+            .new-packages-section .choose .fa-stack-1x
+            {
+                display: none;
+            }
+           .new-packages-section .col .checked
+            {
+                color: #df3223 !important;
+            }
+            .checked .fa-stack-1x
+            {
+                display: block !important; 
+            }
+            .new-packages-section .tab-content
+            {
+                position: relative;
+            }
+            .new-packages-section .tab-content .btn
+            {
+                position: absolute;
+                bottom: -15px; 
+                display: none;
+                left:45%;
+            }
+            .new-packages-section .new-packages-headding  h3.hidding
+            {
+                display: none;
+            }
+        </style>
+    </head>
+    <body>
+        <section class="text-center new-packages-section">
+            <div class="container">
+                <div class="new-packages-headding text-center">
+                    <h2>PRICING</h2>
+                    <p>Our custom package offers different level of services which you can select according to your requirements. Time to complete initial logo designs is 3 to 5 working days.</p>
+                    <h3 class="visibl"> Select The <strong>Following</strong> Services To <strong>Proceed</strong></h3>
+                    <h3 class="hidding"><strong>Selected Service</strong></h3>
+                </div>
+                <div class="tab-content">
+                    <div id="blue" class="tab-pane fade">
+                       <div class="selected-service">
+                        <h3 class="text-center"> HOW MANY IDEAS WOULD YOU LIKE TO SEE FOR YOUR INITIAL LOGO DRAFTS?</h3>
+                        <div class="row">
+                            <div class="col-md-2 col-sm-4 col-xs-6 col">
+                                <span class="choose fa-stack ">
+                                   <i class="fa fa-square-o fa-stack-2x"></i>
+                                   <i class="fa fa-check fa-stack-1x"></i>
+                                </span>
+                                <div class="total-price">
+                                <p>3</p>
+                                <span class="price"> 149 $</span>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6 col">
+                                <span class="choose fa-stack ">
+                                   <i class="fa fa-square-o fa-stack-2x"></i>
+                                   <i class="fa fa-check fa-stack-1x"></i>
+                                </span>
+                                <div class="total-price">
+                                <p>4</p>
+                                <span class="price"> 149 $</span>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6 col">
+                              <span class="choose fa-stack ">
+                                   <i class="fa fa-square-o fa-stack-2x"></i>
+                                   <i class="fa fa-check fa-stack-1x"></i>
+                                </span>
+                                <div class="total-price">
+                                <p>5</p>
+                                <span class="price"> 149 $</span>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6 col">
+                              <span class="choose fa-stack">
+                                   <i class="fa fa-square-o fa-stack-2x"></i>
+                                   <i class="fa fa-check fa-stack-1x"></i>
+                                </span>
+                                <div class="total-price">
+                                <p>6</p>
+                                <span class="price"> 149 $</span>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6 col">
+                              <span class="choose fa-stack ">
+                                   <i class="fa fa-square-o fa-stack-2x"></i>
+                                   <i class="fa fa-check fa-stack-1x"></i>
+                                </span>
+                                <div class="total-price">
+                                <p>7</p>
+                                <span class="price"> 149 $</span>
+                                </div>
+                            </div>
+                            <div class="col-md-2 col-sm-4 col-xs-6 col">
+                              <span class="choose fa-stack ">
+                                   <i class="fa fa-square-o fa-stack-2x"></i>
+                                   <i class="fa fa-check fa-stack-1x"></i>
+                                </span>
+                                <div class="total-price">
+                                <p>8</p>
+                                <span class="price"> 149 $</span>
+                                </div>
+                            </div>
+                        </div>
+                           <div>
+                           <h3>WOULD YOU LIKE TO ADD ON ANY OF THESE?</h3>
+                           <div class="checkbox">
+                                   <label>
+                                       <input type="checkbox" value="">
+                                       3D Logo Conversion <span>100$</span>
+                                       <p>Your final logo will be enhanced with 3D shading, <a href="">click for samples</a></p>
+                                   </label>
+                            </div>
+                            <div class="checkbox">
+                                   <label>
+                                       <input type="checkbox" value="">
+                                       Flash Animated Logo <span>100$</span>
+                                       <p>Your logo will be animated in Flash, <a href="">click for samples</a></p>
+                                   </label>
+                            </div>
+                           </div>
+                       </div>
+                    </div>
+                    <div id="black" class="tab-pane fade">
+                        <div class="selected-service">
+                            <p>
+                                Stationery Includes Business card(s), Letterhead and Envelope
+                            </p>
+                            <ul>
+                                <li><strong>3 Business Card</strong> Design included</li>
+                                <li><strong>1 Letterhead </strong> Design included</li>
+                                <li><strong>1 Envelope </strong> Design included</li>
+                            </ul>
+                       </div>
+                    </div>
+                    <div id="green" class="tab-pane fade">
+                        <div class="selected-service">
+                            <p>
+                                Website basic package includes 3 HTML/CSS pages along with PSD designs <span class="price">299$</span>
+                            </p>
+                              <div class="checkbox">
+                                   <label>
+                                       <input type="checkbox" value="">
+                                       Responsive <span>100$</span>
+                                   </label>
+                            </div>
+                              <div class="checkbox">
+                                   <label>
+                                       <input type="checkbox" value="">
+                                       CMS <span>100$</span>
+                                   </label>
+                            </div>
+                              <div class="checkbox">
+                                   <label>
+                                       <input type="checkbox" value="">
+                                      e-Commerce <span>100$</span>
+                                   </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="purple" class="tab-pane fade">
+                        <div class="selected-service">
+                            <div class="radio">
+                                <label><input type="radio" name="optradio">Single Page <span>299$</span> 
+                                    <p>Single page brochure (8.5" x 11")</p>
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio">Bi-Fold <span>249$</span>
+                                    <p>Bi-fold brochure (11" x 17", double sided)</p>
+                                </label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio"> Tri-Fold <span>249$</span>
+                                  <p>Tri-fold brochure (8.5" x 11" flat, double sided)</p>
+                              </label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio"> Quad-Fold <span>249$</span>
+                                  <p>Quad-fold brochure (8.5" x 11" folded, 11" x 17" flat, double sided)</p>
+                              </label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio"> Presentation Folder <span>249$</span>
+                                  <p>Presentation folder standard size with 18" x 12" (9 x 12 folded) with 4" pocket flap and business card die cut.</p>
+                              </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="red" class="tab-pane fade">
+                        <div class="selected-service">
+                            <div class="radio">
+                                <label><input type="radio" name="optradio">Single Page <span>149$</span></label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio">Bi-Fold <span>149$</span></label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio" > Tri-Fold <span>149$</span></label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio" > Quad-Fold <span>149$</span></label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="optradio"> Presentation Folder <span>149$</span></label>
+                            </div>
+                        </div>
+                        <button class="btn"><i class="fa fa-close" aria-hidden="true"></i>Remove</button>
+                    </div>
+                    <div id="yellow" class="tab-pane fade">
+                    <div class="selected-service">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="">
+                                  Facebook <span>100$</span>
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="">
+                                  google+ <span>100$</span>
+                            </label>
+                        </div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="">
+                                  linked-in <span>100$</span>
+                            </label>
+                        </div>
+                         <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="">
+                                  twitter <span>100$</span>
+                            </label>
+                        </div>
+                    </div>
+                   
+                </div>
+                    <button class="btn"><i class="fa fa-close" aria-hidden="true"></i> Remove</button>
+
+                </div>
+                
+              <div class="nav nav-pills all-new-services">
+                  <a data-toggle="pill" href="#blue">
+                    <div class="services service-blue"> 
+                        <div class="icon text-center">
+                            <span class="hidding">
+                                <i class="fa fa-paint-brush fa-2x"></i>
+                                <p><u>logo</u></p>
+                                <span>
+                                    starting <strong>120$</strong>
+                                </span>
+                            </span>
+                            <span class="showing">select <strong>logo</strong></span>
+                        </div>
+                    </div>
+                    </a>                
+                  <a data-toggle="pill" href="#black">
+                     <div class="services service-black"> 
+                        <div class="icon text-center">
+                            <span class="hidding">
+                                <i class="fa fa-envelope fa-2x"></i>
+                                <p><u>stationary</u></p>
+                                <span>
+                                    starting <strong>120$</strong>
+                                </span>
+                            </span>
+                            <span class="showing">select <strong>stationary</strong></span>
+                        </div>
+                     </div>
+                    </a>               
+                  <a data-toggle="pill" href="#green">
+                     <div class="services service-green">
+                        <div class="icon text-center">
+                            <span class="hidding">
+                                <i class="fa fa-desktop fa-2x"></i>
+                                <p><u>website</u></p>
+                                <span>
+                                    starting <strong>120$</strong>
+                                </span>
+                            </span>
+                            <span class="showing">select <strong>website</strong></span>
+                        </div>
+                    </div>
+                    </a>
+                  <a data-toggle="pill" href="#purple">
+                        <div class="services service-purple"> 
+                        <div class="icon text-center">
+                            <span class="hidding">
+                                <i class="fa fa-map fa-2x"></i>
+                                <p><u>BROCHURE</u></p>
+                                <span>
+                                    starting <strong>120$</strong>
+                                </span>
+                            </span>
+                            <span class="showing">select <strong>BROCHURE</strong></span>
+                        </div>
+                    </div>
+                    </a>
+                  <a data-toggle="pill" href="#red">
+                        <div class="services service-red"> 
+                        <div class="icon text-center">
+                            <span class="hidding">
+                                <i class="fa fa-medium fa-2x"></i>
+                                <p><u>menu</u></p>
+                                <span>
+                                    starting <strong>120$</strong>
+                                </span>
+                            </span>
+                            <span class="showing">select <strong>menu</strong></span>
+                        </div>
+                    </div>
+                    </a>
+                  <a data-toggle="pill" href="#yellow">
+                         <div class="services service-yellow"> 
+                        <div class="icon text-center">
+                            <span class="hidding">
+                                <i class="fa fa-snowflake-o fa-2x"></i>
+                                <p><u>social media</u></p>
+                                <span>
+                                    starting <strong>120$</strong>
+                                </span>
+                            </span>
+                            <span class="showing">select <strong>social</strong></span>
+                        </div>
+                    </div>
+                    </a>
+              </div>
+            </div>
+        </section>
+  
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+        <script>
+        $(document).ready(function(){
+            
+             $(".new-packages-section .btn").click(function(){
+                 $(this).css("display","none"),
+                 $('.new-packages-section .tab-pane').removeClass("active"),
+                 $(".new-packages-section h3.hidding").css("display","none"),
+                 $(".new-packages-section h3.visibl").css("display","block");
+            });
+             $(".new-packages-section .services").click(function(){
+                 $(".new-packages-section h3.hidding").css("display","block"),
+                 $(".new-packages-section h3.visibl").css("display","none"),
+                 $(".new-packages-section .btn").css("display","block");
+            });
+             $(".new-packages-section.choose").click(function(){
+                $(this).addClass("checked");
+            });
+            
+        });
+        </script>
+       
+    </body>

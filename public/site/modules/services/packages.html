@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> </title>
+        <meta charset="utf-8">
+           <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+           <meta name="viewport" content="width=device-width, initial-scale=1" />
+           <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> 
+           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            .new-packages-section .services
+            {
+                border:1px solid;
+                border-radius: 5px;
+                display: inline-block;
+                text-transform: capitalize;
+                margin: 5px;
+                cursor: pointer;
+            }
+            .new-packages-section .all-new-services
+            {
+                margin: 30px auto;
+            }
+            .new-packages-section .services .icon
+            {
+                  width: 125px;
+                  height: 125px;
+                  margin: 3px;
+                  color: white;
+                  display: table;
+                  border: 1px solid #efefef;
+                  border-radius: 5px;
+                  -webkit-transition:ease all 0.8s;
+                  transition: ease all 0.8s;
+            }
+            .new-packages-section .services .icon p
+            {
+                font-weight: bold;
+                font-size: 18px;
+            }
+            .new-packages-section .services .icon i
+            {
+                  margin:auto;
+                  margin-top: 13px;
+                  margin-bottom: 3px;
+                  display: block;
+                  width: 100px;
+                  text-align: center;
+            }
+            .new-packages-section .services .icon span strong
+            {
+                display: block;
+            }
+            .new-packages-section .service-blue
+            {
+                border-color: #009ddc;
+            }
+            .new-packages-section .service-blue .icon
+            {
+                background: #009ddc;
+            }
+            .new-packages-section .service-black
+            {
+                border-color: #1e252b;
+            }
+            .new-packages-section .service-black .icon
+            {
+                background: #1e252b;
+            }
+            .new-packages-section .service-green
+            {
+                border-color: #19bb48;
+            }
+            .new-packages-section .service-green .icon
+            {
+                background: #19bb48;
+            }
+            .new-packages-section .service-purple
+            {
+                border-color: #9a59b5;
+            }
+            .new-packages-section .service-purple .icon
+            {
+                background: #9a59b5;
+            }
+            .new-packages-section .service-red
+            {
+                border-color:#ea2939;
+            }
+            .new-packages-section .service-red .icon
+            {
+                background: #ea2939;
+            }
+             .new-packages-section .service-yellow
+            {
+                border-color:#ECC60B;
+            }
+            .new-packages-section .service-yellow .icon
+            {
+                background: #ECC60B;
+            }
+            .new-packages-section .services .icon .showing
+            {
+                margin-top: 30px;
+                display: none;
+                font-size: 18px;
+                font-weight: 900;
+            }
+             .new-packages-section .services:hover .icon, 
+             .new-packages-section .services:focus .icon 
+            {
+                transform: scale(0.9)
+            }
+             .new-packages-section .services:hover .hidding,
+             .new-packages-section .services:focus .hidding
+            {
+                display: none;
+            }
+             .new-packages-section .services:hover .showing,
+             .new-packages-section .services:focus .showing
+            {
+                display: block
+            }
+            .selected-service .row 
+            {
+                margin:0 -15px 30px;
+                margin-top: 30px;
+            }
+            .selected-service .row .col
+            {
+                padding: 0 20px;
+            }
+            .selected-service .row .col .choose
+            {
+                position: absolute;
+                top: -13px;
+                left: 0;
+                right: 0;
+                margin: auto;
+                width: 28px;
+                height: 28px;
+                background-color: #ffffff;
+                z-index: 1;
+                color: #D7D7D7;
+                font-size: 1em;
+                cursor: pointer;
+            }
+            .selected-service .row .col .total-price
+            {
+                padding: 10px 0;
+                display: block;
+                height: 90px;
+                background-color: #ffffff;
+                text-align: center;
+                position: relative;
+                border-radius: 8px 8px 0 0;
+                border: solid 1px #cadcd9;
+                cursor: pointer;
+                overflow: hidden;
+            }
+             .selected-service .row .col .total-price p
+            {
+                font-size: 1.6em;
+                margin-bottom: 0;
+                color: #1E252B;
+            }
+            .selected-service .row .col .total-price span
+            {
+                position: absolute;
+                bottom: -50%;
+                left: 0;
+                right: 0;
+                margin: auto;
+                width: 85%;
+                max-width: 110px;
+                height: 100%;
+                line-height: 50px;
+                overflow: hidden;
+                font-weight: 700;
+                font-size: 1.300em;
+                background-color: #009ddc;
+                color: #ffffff;
+                border-radius: 50%;
+            }
+        </style>
+    </head>
+    <body class="container-fluid">
+        <section class="new-packages-section">
+            <div class="container">
+                <div class="new-packages-headding text-center">
+                    <h2>pricing</h2>
+                    <p>Our custom package offers different level of services which you can select according to your requirements. Time to complete initial logo designs is 3 to 5 working days.</p>
+                    <h3> Select The <strong>Following</strong> Services To <strong>Proceed</strong></h3>
+                </div>
+                <div class="text-center all-new-services">
+                    <div class="services service-blue"> 
+                        <div class="icon text-center">
+                            <span class="hidding">
+                                <i class="fa fa-paint-brush fa-2x"></i>
+                                <p><u>logo</u></p>
+                                <span>
+                                    starting <strong>120$</strong>
+                                </span>
+                            </span>
+                            <span class="showing">select <strong>logo</strong></span>
+                        </div>
+                    </div>
+                    <div class="services service-black"> 
+                        <div class="icon text-center">
+                            <span class="hidding">
+                                <i class="fa fa-envelope fa-2x"></i>
+                                <p><u>stationary</u></p>
+                                <span>
+                                    starting <strong>120$</strong>
+                                </span>
+                            </span>
+                            <span class="showing">select <strong>stationary</strong></span>
+                        </div>
+                    </div>
+                    <div class="services service-green">
+                        <div class="icon text-center">
+                            <span class="hidding">
+                                <i class="fa fa-desktop fa-2x"></i>
+                                <p><u>website</u></p>
+                                <span>
+                                    starting <strong>120$</strong>
+                                </span>
+                            </span>
+                            <span class="showing">select <strong>website</strong></span>
+                        </div>
+                    </div>
+                    <div class="services service-purple"> 
+                        <div class="icon text-center">
+                            <span class="hidding">
+                                <i class="fa fa-map fa-2x"></i>
+                                <p><u>BROCHURE</u></p>
+                                <span>
+                                    starting <strong>120$</strong>
+                                </span>
+                            </span>
+                            <span class="showing">select <strong>BROCHURE</strong></span>
+                        </div>
+                    </div>
+                    <div class="services service-red"> 
+                        <div class="icon text-center">
+                            <span class="hidding">
+                                <i class="fa fa-medium fa-2x"></i>
+                                <p><u>menu</u></p>
+                                <span>
+                                    starting <strong>120$</strong>
+                                </span>
+                            </span>
+                            <span class="showing">select <strong>menu</strong></span>
+                        </div>
+                    </div>
+                    <div class="services service-yellow"> 
+                        <div class="icon text-center">
+                            <span class="hidding">
+                                <i class="fa fa-snowflake-o fa-2x"></i>
+                                <p><u>social media</u></p>
+                                <span>
+                                    starting <strong>120$</strong>
+                                </span>
+                            </span>
+                            <span class="showing">select <strong>social</strong></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="selected-service text-center">
+                    <h3> HOW MANY IDEAS WOULD YOU LIKE TO SEE FOR YOUR INITIAL LOGO DRAFTS?</h3>
+                    <div class="row">
+                        <div class="col-md-2 col-sm-4 col-xs-6 col">
+                            <span class="choose fa-stack checked">
+                               <i class="fa fa-square-o fa-stack-2x"></i>
+                               <i class="fa fa-check fa-stack-1x"></i>
+                            </span>
+                            <div class="total-price">
+                            <p>3</p>
+                            <span class="price"> 149 $</span>
+                            </div>
+                        </div>
+                        <div class="col-md-2 col-sm-4 col-xs-6 col"></div>
+                        <div class="col-md-2 col-sm-4 col-xs-6 col"></div>
+                        <div class="col-md-2 col-sm-4 col-xs-6 col"></div>
+                        <div class="col-md-2 col-sm-4 col-xs-6 col"></div>
+                        <div class="col-md-2 col-sm-4 col-xs-6 col"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+    </body>
+</html>

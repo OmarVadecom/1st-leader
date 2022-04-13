@@ -1,0 +1,446 @@
+.header,
+.navbar {
+    font-family: Tahoma, sans-serif;
+}
+
+h3,
+h2,
+h1,
+h4,
+h5 {
+    font-family: Tahoma, sans-serif;
+}
+
+.details .btn {
+    font-family: Tahoma, sans-serif;
+}
+
+i.icon.fa.fa-check {
+    font-size: 50px;
+    color: #FFF;
+    margin: auto;
+    position: absolute;
+    display: block;
+    margin-top: 26%;
+    margin-right: 25% !important;
+}
+
+.marketing-page .content p,
+.marketing-services .box p,
+.host .hosting-content p,
+.facebookads-2 .box-ads p,
+.marketing-services .box li {
+    font-family: Tahoma, sans-serif;
+}
+
+.marketing-services .box p {
+    padding-top: 15px;
+    font-family: Tahoma, sans-serif;
+}
+
+.thanks {
+    direction: ltr;
+}
+
+@media screen and (max-width:780px) {
+    .header .col-lg-4 {
+        margin-right: 0 !important;
+    }
+    .header .none-mobile {
+        display: none;
+    }
+}
+
+.navbar .navbar-nav .nav-link {
+    font-family: Tahoma, sans-serif;
+    font-size: 13px;
+}
+
+@media screen and (max-width:780px) {
+    .navbar .navbar-nav {
+        margin-right: -3rem;
+    }
+    .navbar {
+        position: relative;
+    }
+    .navbar .cat-1 {
+        right: 11px;
+        top: 31px !important;
+    }
+    .navbar .cat-2 {
+        top: 32px !important;
+        right: 1%;
+    }
+    .navbar .cat-3 {
+        top: 32px !important;
+        right: 13px;
+    }
+    .navbar .cat-4 {
+        top: 28px !important;
+        right: 6px;
+    }
+    .navbar .navbar-brand img {
+        position: absolute;
+        left: -39px;
+        top: -5px;
+        width: 200px;
+        height: 41px;
+    }
+    .navbar .visible-mobile {
+        position: absolute;
+        left: 59%;
+        top: 7px;
+    }
+}
+
+.navbar .navbar-brand {
+    text-align: left;
+    position: absolute;
+    left: 10%;
+    top: auto;
+}
+
+.portfolio-page .banner h1 span {
+    background-color: #e46000ad;
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    padding: 39px 21px 26px 26px !important;
+    position: absolute;
+    top: -91px;
+    left: -77px;
+    font-size: 30px !important;
+}
+
+@media screen and (max-width:780px) {
+    .navbar .navbar-brand {
+        top: 14px;
+    }
+}
+
+.navbar .web-design:hover .cat-1 {
+    width: 169px;
+}
+
+.navbar .graphic-design:hover .cat-2 {
+    width: 185px;
+}
+
+.navbar .hosting:hover .cat-3 {
+    width: 116px;
+}
+
+.navbar .portfolio:hover .cat-4 {
+    width: 131px;
+}
+
+.main-slider {
+    height: 382px !important;
+}
+
+@media screen and (max-width:780px) {
+    .main-slider {
+        height: 763px !important;
+    }
+}
+
+.main-slider h2 {
+    font-family: Tahoma, sans-serif;
+    color: #353535;
+}
+
+.main-slider .box .content {
+    margin-top: 10%;
+    width: 85%;
+    text-align: right;
+    float: right;
+    font-family: Tahoma, sans-serif;
+}
+
+@media screen and (max-width:780px) {
+    .main-slider .row {
+        flex-direction: column;
+    }
+}
+
+.main-slider .owl-item img {
+    margin-left: 1% !important;
+    display: inline-block;
+    width: 90% !important;
+    margin-top: 50px !important;
+}
+
+.main-slider li {
+    font-family: Tahoma, sans-serif;
+    font-size: 17px;
+    margin: 2px;
+}
+
+.main-slider .btn {
+    font-family: Tahoma, sans-serif;
+}
+
+.main-slider .btn-logo {
+    background-color: #E46000 !important;
+}
+
+.text p {
+    font-size: 30px;
+    font-family: Tahoma, sans-serif;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+@media screen and (max-width:780px) {
+    .text p {
+        line-height: 1.4;
+        font-size: 29px;
+        font-weight: bold;
+    }
+    .text h4 {
+        margin-top: -24px;
+    }
+}
+
+.text h4 {
+    font-family: Tahoma, sans-serif;
+}
+
+.text .change {
+    padding-bottom: 20px !important;
+}
+
+.change {
+    border-top: 0.5px solid #CCC;
+    border-bottom: 0.5px solid #CCC;
+    margin-top: 4%;
+    padding: 0 !important;
+}
+
+#demo_container {
+    background-color: #1174de;
+    color: #fff;
+    padding: 4px 11px;
+    border-radius: 5px;
+    font-family: Tahoma, sans-serif;
+}
+
+@media screen and (max-width:780px) {
+    #demo_container {
+        padding: 1px 11px;
+    }
+}
+
+@media screen and (max-width:780px) {
+    .changetext p {
+        font-size: 16px !important;
+        padding: 15px !important;
+        line-height: 2;
+    }
+}
+
+.changetext #demo_container {
+    background-color: #1174de;
+    color: #fff;
+    padding: 5px 20px;
+    border-radius: 5px;
+}
+
+.particles-js .box a {
+    font-family: Tahoma, sans-serif;
+    font-weight: bold;
+}
+
+.particles-js h1 {
+    font-weight: bold;
+    font-family: Tahoma, sans-serif;
+    color: #000;
+    font-size: 2.50rem;
+    margin: 10px;
+}
+
+.particles-js .box a {
+    font-size: 19px !important;
+}
+
+.particles-js .box a:hover {
+    color: #e46000;
+}
+
+@media screen and (max-width:780px) {
+    .main-slider .mobile {
+        margin: auto !important;
+    }
+    .particles-js h1 {
+        margin-top: -23px;
+    }
+}
+
+.particles-js .box p {
+    font-family: Tahoma, sans-serif;
+}
+
+.particles-js .box a h3 {
+    font-family: Tahoma, sans-serif;
+    font-weight: bold;
+    font-size: 19px;
+}
+
+.details {
+    font-family: Tahoma, sans-serif;
+}
+
+.details p {
+    font-size: 21px;
+    font-family: Tahoma, sans-serif;
+}
+
+.details .details-item-arabic {
+    font-weight: bold;
+    font-family: Tahoma, sans-serif;
+    font-size: 25px;
+    margin: 50px 0px;
+    color: #000;
+    text-align: center;
+    font-size: 2.1rem !important;
+}
+
+@media screen and (max-width:780px) {
+    .details .details-btn-ar {
+        margin: auto !important;
+        margin-top: 20px !important;
+    }
+}
+
+.footer {
+    font-family: Tahoma, sans-serif;
+}
+
+.footer a {
+    font-family: Tahoma, sans-serif;
+}
+
+.footer ul li {
+    font-family: Tahoma, sans-serif;
+}
+
+@media screen and (max-width:780px) {
+    .footer {
+        text-align: center !important;
+    }
+}
+
+.end-footer p,
+a {
+    font-size: 14px;
+    font-family: Tahoma, sans-serif;
+}
+
+
+/* Web-design */
+
+.web-services-2 h4 {
+    font-weight: bold;
+    font-family: Tahoma, sans-serif;
+}
+
+.website-services img {
+    margin-top: 66px !important;
+}
+
+.website-services .services-btn {
+    background-color: #0171bc !important;
+    box-shadow: 0 2px 2px #0171bc;
+}
+
+.lang-switch-ar {
+    background-color: #e46000;
+    position: fixed;
+    top: 2%;
+    width: 40px;
+    height: 27px;
+    text-align: center;
+    color: #fff;
+    border-radius: 2px;
+    left: 50%;
+    z-index: 2;
+    display: none;
+}
+
+@media screen and (max-width:780px) {
+    .lang-switch-ar {
+        display: inherit;
+    }
+}
+
+.lang-switch-ar a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.navbar .navbar-nav .dropdown:hover .dropdown-items {
+    text-align: right;
+}
+
+.navbar .navbar-nav .dropdown .dropdown-items {
+    left: -78% !important;
+}
+
+.navbar .navbar-nav .dropdown:hover .dropdown-items {
+    left: -78% !important;
+}
+
+@media only screen and (max-width: 780px) and (min-width: 320px) {
+    .navbar .navbar-nav .dropdown .dropdown-items {
+        left: 0% !important;
+        text-align: right !important;
+    }
+    .navbar .navbar-nav .dropdown:hover .dropdown-items {
+        left: auto !important;
+    }
+}
+
+.web-offer .offer-box ul li {
+    text-align: right;
+}
+
+.portfolio-page .owl-prev span {
+    right: -7%;
+    left: auto !important;
+}
+
+.portfolio-page .owl-next span {
+    left: -59px;
+    right: auto !important;
+}
+
+.portfolio-page .banner-ar h4 span {
+    width: 129px;
+    padding: 13px;
+    top: -51px;
+    font-size: 17px;
+    height: 70px;
+}
+
+.marketing-services {
+    text-align: right;
+}
+
+.marketing-page .slider {
+    margin-top: 0%;
+    width: 500px;
+    margin-right: 21%;
+    direction: ltr;
+}
+
+.marketing-page {
+    direction: ltr;
+}
+
+.content-slider {
+    text-align: right;
+}
+
+.graphic-content {
+    text-align: right !important;
+}

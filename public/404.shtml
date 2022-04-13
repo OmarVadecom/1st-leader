@@ -1,0 +1,27 @@
+<body>
+
+<div id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-offset-4 col-sm-4">
+                <div class="text-center">
+                    <img src="https://vadecom.net/assets/site/img/logo.png"
+                         alt="شركة فاديكوم"
+                         class="logo"
+                    >
+
+                        <h1 class="error-title">
+        <strong>
+            404 :: الصفحة غير موجودة
+        </strong>
+    </h1>
+
+    <p>زيارة <a href="https://vadecom.net/ar">الصفحة الرئيسية</a>.</p>                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://vadecom.net/assets/site/vendor/bootstrap/js/bootstrap.min.js"></script>
+</body>
