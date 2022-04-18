@@ -118,7 +118,7 @@
             <?php if(isset($verify)): ?>
             <button type="button" class="tablinks " onclick="openTab(event, 'verify-tab')">التعميد</button>
             <?php endif; ?>
-
+            <button type="button" class="tablinks" onclick="openTab(event, 'attach-tab')">اضافه مرفق</button>
         </div>
 
         <div id="product-tab" class="tabcontent" style="display: block;">
@@ -250,7 +250,7 @@
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label for="title">قيمه الدفعه الاولي</label>
-                                <input disabled type="text" id="startpaymentvalue" placeholder="الدفعه الاولي المدفوعه"
+                                <input  type="text" id="startpaymentvalue" placeholder="الدفعه الاولي المدفوعه"
                                     class="form-control" id="">
                             </div>
                         </div>
@@ -336,7 +336,37 @@
             </div>
         </div>
         <?php endif; ?>
-
+        -<div id="attach-tab" class="tabcontent " style="display: none;">
+            <div class="container">
+                <div class="row" >
+                    <div class="col-md-8"><h2>اضافة مرفقات لعروض الاسعار المعمدة على دفعات</h2>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <form action="<?php echo e(route('priceoffer.multiuploads',$offer->id)); ?>" method="post" enctype="multipart/form-data">
+                            <?php echo csrf_field(); ?>
+                            <label for="">اضافة مرفقات :</label>
+                            <br />
+                            <select name="type">
+                                <option disabled selected>اختر نوع المرفق</option>
+                                <option value="كفالة غرم">كفالة غرم</option>
+                                <option value=" كمبياله"> كمبياله</option>
+                                <option value=" بيع اجل"> بيع اجل</option>
+                                <option value=" كروكى "> كروكى </option>
+                            </select>
+                            <br>
+                            <br>
+                            <input type="file" class="form-control" name="attach" multiple />
+                            <br /><br />
+                            <input type="submit" class="btn btn-primary" value="Upload" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <input type="hidden" value="0" name="prstatus" id="prstatus">
         <div class="col-md-12">

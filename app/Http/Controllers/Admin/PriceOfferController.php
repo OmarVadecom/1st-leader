@@ -25,12 +25,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\View;
+use PhpOffice\PhpSpreadsheet\Style\NumberFormat\NumberFormatter;
 use Response;
 
 class PriceOfferController extends MainController
 {
     private $viewPath = 'admin.priceoffer.';
     private $policy = 'PriceOffers.';
+    private $number = '';
+
 
     public function __construct()
     {
@@ -642,7 +645,8 @@ class PriceOfferController extends MainController
                 }
             })
             ->editColumn('number', function ($model) {
-                return 'APV-' . substr($model->created_at->format('Y'), -2) . '-' . str_pad($model->rownum, 4, '0', STR_PAD_LEFT);
+               $num =  $this->number = 'APV-' . substr($model->created_at->format('Y'), -2) . '-' . str_pad($model->rownum, 4, '0', STR_PAD_LEFT);
+                return  $num;
             })
             ->editColumn('date', function ($model) {
 
@@ -658,12 +662,19 @@ class PriceOfferController extends MainController
                 }
             })
             ->editColumn('action', function ($model) {
-                $return = getAjaxAction($this->policy, $model, route('priceoffer.show', $model->id) . '?invoice_num=' . $model->rownum, null, null);
-                $return .= '<a href="' . route('priceoffer.show', $model->id) . '?invoice_num=' . $model->rownum . '&type=image" class="btn btn-circle" target="_blank"><i class="fa fa-image"></i></a>';
+//                if ($model->inv_type == 2) {
+//                $return = getAjaxAction($this->policy, $model, route('priceoffer.show', $model->id) . '?invoice_num=' . $model->rownum, null, null);
+//                $return .= '<a href="' . route('priceoffer.show', $model->id) . '?invoice_num=' . $model->rownum . '&type=image" class="btn btn-circle" target="_blank"><i class="fa fa-image"></i></a>';
+//                }
+                $return ='';
                 if ($model->inv_type == 2) {
                     $return .= '<a href="' . route('priceoffer.add_attach', $model->id) . '" class="btn btn-circle" target="_blank"><i class="icon-cloud-upload"></i></a>';
+                    $return .= '<a href="' . route('priceoffer.contract', $model->id  ) . '" class="btn btn-circle" target="_blank"><i class="icon-file-text"></i></a>';
+                }else{
+                    $return = getAjaxAction($this->policy, $model, route('priceoffer.show', $model->id) . '?invoice_num=' . $model->rownum, null, null);
+                    $return .= '<a href="' . route('priceoffer.show', $model->id) . '?invoice_num=' . $model->rownum . '&type=image" class="btn btn-circle" target="_blank"><i class="fa fa-image"></i></a>';
                 }
-                $return .= '<a href="' . route('priceoffer.edit_verify', $model->id) . '" class="btn btn-circle" target="_blank"><i class="fa fa-edit"></i></a>';
+//                $return .= '<a href="' . route('priceoffer.edit_verify', $model->id) . '" class="btn btn-circle" target="_blank"><i class="fa fa-edit"></i></a>';
 
                 return $return;
             })
@@ -793,6 +804,11 @@ class PriceOfferController extends MainController
     public function upload_attach_mo(Request $request, $id)
     {
         $input = $request->all();
+        $this->validate($request,[
+            'attach' => 'required',
+            'type' => 'required',
+
+        ]);
         if ($request->has('attach'))
         {
             $file_path = 'public/attachments';
@@ -807,5 +823,81 @@ class PriceOfferController extends MainController
           'offer_id' => $id
       ]);
         return redirect()->route('admin.mooffer')->with('message','تم اضافة المرفقات بنجاح ');
+    }
+
+    public function contract_sale($id)
+    {
+        $offer = PriceOffer::find($id);
+        // get category name of customer
+        $category = CustomerCategory::find($offer->customer->category_id);
+        $category_name = $category->name;
+
+        $this->number;
+        $offer_number =  'APV-' . substr($offer->created_at->format('Y'), -2) . '-' . str_pad($offer->rownum, 4, '0', STR_PAD_LEFT);
+        $totals = explode(',', $offer->totals);
+        $sum = 0;
+        if (count($totals) > 0) {
+            $sum = array_sum($totals);
+        }
+        if (isset($offer->addon_disc) && $offer->addon_disc != "" && $offer->addon_disc != 0) {
+            return number_format($sum - $offer->addon_disc, 2);
+        }
+        $total_price = number_format($sum, 2);
+
+        $percent = $sum * 0.30;
+        // رقميا
+        $percent_format = number_format($percent, 2);
+        // كتابيا
+        $f = new \NumberFormatter( "ar", \NumberFormatter::SPELLOUT );
+        $word_percent = $f->format($percent);
+
+
+
+        $percent_remainder = $sum * 0.70;
+        // كتابيا
+        $f = new \NumberFormatter( "ar", \NumberFormatter::SPELLOUT );
+        $word_remainder= $f->format($percent_remainder);
+
+        $funds = Funds::where('price_id', $id)->get();
+//      $num_of_funds =   $funds->code . '-' . str_pad($funds->rownum, 4, '0', STR_PAD_LEFT);
+
+        //get date of fuds
+
+        $fund_date_start   = Funds::where('price_id', $id)->first();
+        $fund_date_end   = Funds::where('price_id', $id)->orderBy('created_at', 'desc')->first();
+
+
+
+        // old invoice
+        $offer = PriceOffer::find($id);
+        $customer = Customers::find($offer->customer_id);
+        $products = explode(',', $offer->products_id);
+        $parts = explode(',', $offer->parts_id);
+        $quantities = explode(',', $offer->quantities);
+        $prices = explode(',', $offer->prices);
+        $discounts = explode(',', $offer->discounts);
+        $drebas = explode(',', $offer->dreba);
+
+        // get previous
+        $previous = PriceOffer::where('id', '<', $offer->id)->where('status', 0)->max('id');
+        // get next
+        $next = PriceOffer::where('id', '>', $offer->id)->where('status', 0)->min('id');
+
+        $allproducts = array();
+        if (count($products) > 0 && $products[0] != null) {
+            foreach ($products as $product) {
+                $single = Products::find($product);
+                array_push($allproducts, $single);
+            }
+        }
+        if (count($parts) > 0 && $parts[0] != null) {
+            foreach ($parts as $part) {
+                $single = Parts::find($part);
+                array_push($allproducts, $single);
+            }
+        }
+
+
+        return view('admin.priceoffer.contract_sale' , compact('offer','offer_number','total_price','percent_format','percent_remainder','word_percent','word_remainder','funds','previous','next','offer','allproducts','quantities','prices','discounts','drebas','customer','category_name','fund_date_start','fund_date_end'));
     }
 }

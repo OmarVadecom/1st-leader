@@ -303,8 +303,6 @@ $telephone_red=explode(',',$customer->telephone_red);
     </div>
     @endif
 
-
-
     <button style="display: flex;" class="btn btn-primary menu1">اضافه أخر </button>
   </div>
 
@@ -316,7 +314,7 @@ $telephone_red=explode(',',$customer->telephone_red);
 
                 <p class="headtitlee">المسؤول {{$key+1}} </p>
                 <div class="col-md-6" style="margin-bottom:50px">
-                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                    <div class="form-group{{ $errors->has('esp_name_sponsor') ? ' has-error' : '' }}">
                         <label>اسم المسؤول </label>
                         {!! Form::text("resp_name_sponsor[]", $customer->res_name_sponsor , [
                         'class' => 'form-control ',
@@ -325,7 +323,7 @@ $telephone_red=explode(',',$customer->telephone_red);
                         ]) !!}
                     </div><!-- /.form-group -->
 
-                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                    <div class="form-group{{ $errors->has('work_sponsor') ? ' has-error' : '' }}">
                         <label>المهنه</label>
                         {!! Form::text("work_sponsor[]", $customer->work_sponsor, [
                         'class' => 'form-control',
@@ -333,7 +331,7 @@ $telephone_red=explode(',',$customer->telephone_red);
                         ]) !!}
                     </div><!-- /.form-group -->
 
-                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                    <div class="form-group{{ $errors->has('resp_tele_sponsor') ? ' has-error' : '' }}">
                         <label>رقم الهاتف</label>
                         {!! Form::text("resp_tele_sponsor[]", $customer->resp_tele_sponsor , [
                         'class' => 'form-control',
@@ -343,7 +341,7 @@ $telephone_red=explode(',',$customer->telephone_red);
                 </div>
 
                 <div class="col-md-6" style="margin-bottom:50px">
-                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                    <div class="form-group{{ $errors->has('resp_phone_sponsor') ? ' has-error' : '' }}">
                         <label></label>
                         {!! Form::text("resp_phone_sponsor[]", $customer->resp_phone_sponsor , [
                         'class' => 'form-control ',
@@ -353,7 +351,7 @@ $telephone_red=explode(',',$customer->telephone_red);
                     </div><!-- /.form-group -->
 
 
-                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                    <div class="form-group{{ $errors->has('resp_email_sponsor') ? ' has-error' : '' }}">
                         <label>البريد الالكتروني</label>
                         {!! Form::email("resp_email_sponsor[]",$customer->resp_email_sponsor, [
                         'class' => 'form-control',
@@ -366,13 +364,35 @@ $telephone_red=explode(',',$customer->telephone_red);
                         @endif
                     </div><!-- /.form-group -->
 
-                    <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                    <div class="form-group{{ $errors->has('resp_tele_red_sponsor') ? ' has-error' : '' }}">
                         <label>تحويله</label>
                         {!! Form::text("resp_tele_red_sponsor[]",$customer->resp_tele_red_sponsor, [
                         'class' => 'form-control',
                         'placeholder' => 'تحويله'
                         ]) !!}
                     </div><!-- /.form-group -->
+                    <div class="form-group{{ $errors->has('resp_city_sponsor') ? ' has-error' : '' }}">
+                        <label>العنوان</label>
+                        {!! Form::text("resp_city_sponsor[]",$customer->resp_city_sponsor, [
+                        'class' => 'form-control',
+                        'placeholder' => 'العنوان'
+                        ]) !!}
+                    </div>
+                    <div class="form-group{{ $errors->has('resp_mail_box_sponsor') ? ' has-error' : '' }}">
+                        <label>صندوق البريد</label>
+                        {!! Form::text("resp_mail_box_sponsor[]",$customer->resp_mail_box_sponsor, [
+                        'class' => 'form-control',
+                        'placeholder' => 'صندوق البريد'
+                        ]) !!}
+                    </div>
+                    <div class="form-group{{ $errors->has('resp_mail_box_sponsor') ? ' has-error' : '' }}">
+                        <label>رقم الهويه</label>
+                        {!! Form::text("resp_id_number_sponsor[]",$customer->resp_id_number_sponsor, [
+                        'class' => 'form-control',
+                        'placeholder' => 'رقم الهوية'
+                        ]) !!}
+                    </div>
+                    <!-- /.form-group -->
                 </div>
 
 {{--            @endforeach--}}
@@ -421,27 +441,46 @@ $telephone_red=explode(',',$customer->telephone_red);
                     ]) !!}
                     @if ($errors->has('email'))
                         <span class="help-block">
-          <strong style="color:red">{{ $errors->first('email') }}</strong>
-        </span>
+                   <strong style="color:red">{{ $errors->first('email') }}</strong>
+               </span>
                     @endif
                 </div><!-- /.form-group -->
 
-                <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                <div class="form-group{{ $errors->has('resp_tele_red_sponsor') ? ' has-error' : '' }}">
                     <label>تحويله</label>
                     {!! Form::text("resp_tele_red_sponsor[]",'', [
                     'class' => 'form-control',
                     'placeholder' => 'تحويله'
                     ]) !!}
                 </div><!-- /.form-group -->
+
+                <div class="form-group{{ $errors->has('resp_city_sponsor') ? ' has-error' : '' }}">
+                    <label>العنوان</label>
+                    {!! Form::text("resp_city_sponsor[]",'', [
+                    'class' => 'form-control',
+                    'placeholder' => 'العنوان'
+                    ]) !!}
+                </div>
+                <div class="form-group{{ $errors->has('resp_mail_box_sponsor') ? ' has-error' : '' }}">
+                    <label>صندوق البريد</label>
+                    {!! Form::text("resp_mail_box_sponsor[]",'', [
+                    'class' => 'form-control',
+                    'placeholder' => 'صندوق البريد'
+                    ]) !!}
+                </div>
+                <div class="form-group{{ $errors->has('resp_id_number_sponsor') ? ' has-error' : '' }}">
+                    <label>رقم الهويه</label>
+                    {!! Form::text("resp_id_number_sponsor[]",'', [
+                    'class' => 'form-control',
+                    'placeholder' => 'رقم الهوية'
+                    ]) !!}
+                </div>
             </div>
+
         @endif
 
 
     </div>
-
-
-
-
 
 
 

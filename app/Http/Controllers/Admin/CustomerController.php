@@ -47,6 +47,7 @@ class CustomerController extends MainController
     }
     public function store(Request $request)
     {
+
         if ($request->selectregion != "") {
             $region = $request->selectregion;
         } else {
@@ -95,6 +96,9 @@ class CustomerController extends MainController
         $resp_phone_sponsor = implode(',', $request->resp_phone_sponsor);
         $resp_email_sponsor = implode(',', $request->resp_email_sponsor);
         $resp_tele_red_sponsor = implode(',', $request->resp_tele_red_sponsor);
+        $resp_city_sponsor = implode(',', $request->resp_city_sponsor);
+        $resp_mail_box_sponsor = implode(',', $request->resp_mail_box_sponsor);
+        $resp_id_number_sponsor = implode(',', $request->resp_id_number_sponsor);
 
 
         $name = $request->name;
@@ -145,6 +149,9 @@ class CustomerController extends MainController
         $customer->resp_phone_sponsor = $resp_phone_sponsor;
         $customer->resp_email_sponsor = $resp_email_sponsor;
         $customer->resp_tele_red_sponsor = $resp_tele_red_sponsor;
+        $customer->resp_city_sponsor = $resp_city_sponsor;
+        $customer->resp_mail_box_sponsor = $resp_mail_box_sponsor;
+        $customer->resp_id_number_sponsor = $resp_id_number_sponsor;
 
         $customer->save();
         return redirect(route('customers.index'))->withFlashMessage('تم انشاء العميل بنجاح');
@@ -210,6 +217,9 @@ class CustomerController extends MainController
         $resp_phone_sponsor = implode(',', $request->resp_phone_sponsor);
         $resp_email_sponsor = implode(',', $request->resp_email_sponsor);
         $resp_tele_red_sponsor = implode(',', $request->resp_tele_red_sponsor);
+        $resp_city_sponsor = implode(',', $request->resp_city_sponsor);
+        $resp_mail_box_sponsor = implode(',', $request->resp_mail_box_sponsor);
+        $resp_id_number_sponsor = implode(',', $request->resp_id_number_sponsor);
 
 
         if ($request->selectregion != "") {
@@ -261,6 +271,9 @@ class CustomerController extends MainController
         $customer->resp_phone_sponsor = $resp_phone_sponsor;
         $customer->resp_email_sponsor = $resp_email_sponsor;
         $customer->resp_tele_red_sponsor = $resp_tele_red_sponsor;
+        $customer->resp_city_sponsor = $resp_city_sponsor;
+        $customer->resp_mail_box_sponsor = $resp_mail_box_sponsor;
+        $customer->resp_id_number_sponsor = $resp_id_number_sponsor;
         $customer->save();
 
         return redirect(route('customers.index'))->withFlashMessage('تم تعديل العميل بنجاح');
