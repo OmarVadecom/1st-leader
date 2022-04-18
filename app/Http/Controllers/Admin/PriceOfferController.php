@@ -25,12 +25,15 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\View;
+use PhpOffice\PhpSpreadsheet\Style\NumberFormat\NumberFormatter;
 use Response;
 
 class PriceOfferController extends MainController
 {
     private $viewPath = 'admin.priceoffer.';
     private $policy = 'PriceOffers.';
+    private $number = '';
+
 
     public function __construct()
     {
@@ -642,7 +645,8 @@ class PriceOfferController extends MainController
                 }
             })
             ->editColumn('number', function ($model) {
-                return 'APV-' . substr($model->created_at->format('Y'), -2) . '-' . str_pad($model->rownum, 4, '0', STR_PAD_LEFT);
+               $num =  $this->number = 'APV-' . substr($model->created_at->format('Y'), -2) . '-' . str_pad($model->rownum, 4, '0', STR_PAD_LEFT);
+                return  $num;
             })
             ->editColumn('date', function ($model) {
 
@@ -658,10 +662,12 @@ class PriceOfferController extends MainController
                 }
             })
             ->editColumn('action', function ($model) {
-                $return = getAjaxAction($this->policy, $model, route('priceoffer.show', $model->id) . '?invoice_num=' . $model->rownum, null, null);
-                $return .= '<a href="' . route('priceoffer.show', $model->id) . '?invoice_num=' . $model->rownum . '&type=image" class="btn btn-circle" target="_blank"><i class="fa fa-image"></i></a>';
+//                $return = getAjaxAction($this->policy, $model, route('priceoffer.show', $model->id) . '?invoice_num=' . $model->rownum, null, null);
+//                $return .= '<a href="' . route('priceoffer.show', $model->id) . '?invoice_num=' . $model->rownum . '&type=image" class="btn btn-circle" target="_blank"><i class="fa fa-image"></i></a>';
+              $return = '';
                 if ($model->inv_type == 2) {
                     $return .= '<a href="' . route('priceoffer.add_attach', $model->id) . '" class="btn btn-circle" target="_blank"><i class="icon-cloud-upload"></i></a>';
+                    $return .= '<a href="' . route('priceoffer.contract', $model->id  ) . '" class="btn btn-circle" target="_blank"><i class="icon-file-text"></i></a>';
                 }
                 $return .= '<a href="' . route('priceoffer.edit_verify', $model->id) . '" class="btn btn-circle" target="_blank"><i class="fa fa-edit"></i></a>';
 
@@ -807,5 +813,38 @@ class PriceOfferController extends MainController
           'offer_id' => $id
       ]);
         return redirect()->route('admin.mooffer')->with('message','تم اضافة المرفقات بنجاح ');
+    }
+
+    public function contract_sale($id)
+    {
+        $offer = PriceOffer::find($id);
+        $this->number;
+        $offer_number =  'APV-' . substr($offer->created_at->format('Y'), -2) . '-' . str_pad($offer->rownum, 4, '0', STR_PAD_LEFT);
+        $totals = explode(',', $offer->totals);
+        $sum = 0;
+        if (count($totals) > 0) {
+            $sum = array_sum($totals);
+        }
+        if (isset($offer->addon_disc) && $offer->addon_disc != "" && $offer->addon_disc != 0) {
+            return number_format($sum - $offer->addon_disc, 2);
+        }
+        $total_price = number_format($sum, 2);
+
+        $percent = $sum * 0.30;
+        // رقميا
+        $percent_format = number_format($percent, 2);
+        // كتابيا
+        $f = new \NumberFormatter( "ar", \NumberFormatter::SPELLOUT );
+        $word_percent = $f->format($percent);
+
+
+
+        $percent_remainder = $sum * 0.70;
+        // كتابيا
+        $f = new \NumberFormatter( "ar", \NumberFormatter::SPELLOUT );
+        $word_remainder= $f->format($percent_remainder);
+
+        $funds = Funds::where('price_id', $id)->get();
+        return view('admin.priceoffer.contract_sale' , compact('offer','offer_number','total_price','percent_format','percent_remainder','word_percent','word_remainder','funds'));
     }
 }

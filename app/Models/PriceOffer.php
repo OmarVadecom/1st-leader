@@ -46,7 +46,10 @@ class PriceOffer extends Model
     {
         return $this->hasMany('App\Models\Funds', 'price_id');
     }
-
+    public function products()
+    {
+        return $this->hasMany('App\Models\Products', 'products_id');
+    }
     public function getCodeAttribute()
     {
         return 'QUT-' . substr($this['created_at']->format('Y'), -2);
@@ -56,4 +59,5 @@ class PriceOffer extends Model
     {
         return $query->whereYear('created_at', session('loginYear') ?? gmdate('Y'));
     }
+
 }

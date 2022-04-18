@@ -321,3 +321,7 @@ Route::get('/priceoffer_verify/{id}', 'PriceOfferController@edit_verify')->name(
 Route::get('/priceoffer_add_attach/{id}', 'PriceOfferController@add_attach_form')->name('priceoffer.add_attach');
 
 Route::post('/priceoffer_multiuploads/{id}', 'PriceOfferController@upload_attach_mo')->name('priceoffer.multiuploads');
+
+Route::get('/priceoffer_contract/{id}', 'PriceOfferController@contract_sale')->name('priceoffer.contract');
+
+

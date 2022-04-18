@@ -1,0 +1,61 @@
+body
+{
+    direction: rtl;
+}
+header
+{
+    border-bottom: 5px solid rgb(138, 30, 9);
+}
+.container
+{
+    font-size: 18px;
+}
+.title
+{
+   text-align: center;
+   font-weight: 900 !important;  
+}
+.title h2
+{
+    font-size: 3rem !important; 
+    margin-top: 5px;
+}
+.title h4
+{
+    font-size: 3rem !important; 
+    margin-top: 5px;
+    width: 400px;
+    text-align: left;
+    position: relative;
+}
+.title h4 span
+{
+    width: 350px;
+    height: 25px;
+    border: 2px solid black;
+    display: inline-block;
+    position: absolute;
+    top: 5%;
+    right: 105%;
+}
+.content
+{
+    margin: 5px !important;
+    margin-top: 25px !important;
+}
+.pay
+{
+    margin-right: 150px;
+    font-weight: 900 !important;  
+}
+table, th, td
+{
+    border: 1px solid black;
+    border-collapse: collapse;
+    text-align: center;
+    font-weight: 900 !important; 
+}
+.second-content
+{
+    margin-top: 50px;
+}
