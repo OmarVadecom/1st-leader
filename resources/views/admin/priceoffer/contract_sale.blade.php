@@ -255,8 +255,8 @@
                     <tr>
                         <td>{{$index +1}}</td>
                         <td>{{$fund->money}}</td>
-                        <td>رقمها</td>
-                        <td>الفئة</td>
+                        <td></td>
+                        <td></td>
                         <td>{{$fund->date_from}}</td>
                         <td>{{$fund->date_to}}</td>
                     </tr>
