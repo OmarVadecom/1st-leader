@@ -662,14 +662,19 @@ class PriceOfferController extends MainController
                 }
             })
             ->editColumn('action', function ($model) {
+//                if ($model->inv_type == 2) {
 //                $return = getAjaxAction($this->policy, $model, route('priceoffer.show', $model->id) . '?invoice_num=' . $model->rownum, null, null);
 //                $return .= '<a href="' . route('priceoffer.show', $model->id) . '?invoice_num=' . $model->rownum . '&type=image" class="btn btn-circle" target="_blank"><i class="fa fa-image"></i></a>';
-              $return = '';
+//                }
+                $return ='';
                 if ($model->inv_type == 2) {
                     $return .= '<a href="' . route('priceoffer.add_attach', $model->id) . '" class="btn btn-circle" target="_blank"><i class="icon-cloud-upload"></i></a>';
                     $return .= '<a href="' . route('priceoffer.contract', $model->id  ) . '" class="btn btn-circle" target="_blank"><i class="icon-file-text"></i></a>';
+                }else{
+                    $return = getAjaxAction($this->policy, $model, route('priceoffer.show', $model->id) . '?invoice_num=' . $model->rownum, null, null);
+                    $return .= '<a href="' . route('priceoffer.show', $model->id) . '?invoice_num=' . $model->rownum . '&type=image" class="btn btn-circle" target="_blank"><i class="fa fa-image"></i></a>';
                 }
-                $return .= '<a href="' . route('priceoffer.edit_verify', $model->id) . '" class="btn btn-circle" target="_blank"><i class="fa fa-edit"></i></a>';
+//                $return .= '<a href="' . route('priceoffer.edit_verify', $model->id) . '" class="btn btn-circle" target="_blank"><i class="fa fa-edit"></i></a>';
 
                 return $return;
             })

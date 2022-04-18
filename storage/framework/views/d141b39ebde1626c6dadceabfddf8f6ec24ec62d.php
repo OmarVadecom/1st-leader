@@ -267,8 +267,8 @@
                     <tr>
                         <td><?php echo e($index +1); ?></td>
                         <td><?php echo e($fund->money); ?></td>
-                        <td>رقمها</td>
-                        <td>الفئة</td>
+                        <td></td>
+                        <td></td>
                         <td><?php echo e($fund->date_from); ?></td>
                         <td><?php echo e($fund->date_to); ?></td>
                     </tr>

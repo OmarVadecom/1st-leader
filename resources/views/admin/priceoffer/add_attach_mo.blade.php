@@ -27,8 +27,10 @@
                 <br />
                 <select name="type">
                     <option disabled selected>اختر نوع المرفق</option>
-                    <option value="كروكي">كروكي</option>
-                    <option value="كفيل">كفيل</option>
+                    <option value="كفالة غرم">كفالة غرم</option>
+                    <option value=" كمبياله"> كمبياله</option>
+                    <option value=" بيع اجل"> بيع اجل</option>
+                    <option value=" كروكى "> كروكى </option>
                 </select>
                 <br>
                 <br>
