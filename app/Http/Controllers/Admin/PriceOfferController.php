@@ -799,6 +799,11 @@ class PriceOfferController extends MainController
     public function upload_attach_mo(Request $request, $id)
     {
         $input = $request->all();
+        $this->validate($request,[
+            'attach' => 'required',
+            'type' => 'required',
+
+        ]);
         if ($request->has('attach'))
         {
             $file_path = 'public/attachments';
@@ -818,6 +823,10 @@ class PriceOfferController extends MainController
     public function contract_sale($id)
     {
         $offer = PriceOffer::find($id);
+        // get category name of customer
+        $category = CustomerCategory::find($offer->customer->category_id);
+        $category_name = $category->name;
+
         $this->number;
         $offer_number =  'APV-' . substr($offer->created_at->format('Y'), -2) . '-' . str_pad($offer->rownum, 4, '0', STR_PAD_LEFT);
         $totals = explode(',', $offer->totals);
@@ -845,6 +854,45 @@ class PriceOfferController extends MainController
         $word_remainder= $f->format($percent_remainder);
 
         $funds = Funds::where('price_id', $id)->get();
-        return view('admin.priceoffer.contract_sale' , compact('offer','offer_number','total_price','percent_format','percent_remainder','word_percent','word_remainder','funds'));
+//      $num_of_funds =   $funds->code . '-' . str_pad($funds->rownum, 4, '0', STR_PAD_LEFT);
+
+        //get date of fuds
+
+        $fund_date_start   = Funds::where('price_id', $id)->first();
+        $fund_date_end   = Funds::where('price_id', $id)->orderBy('created_at', 'desc')->first();
+
+
+
+        // old invoice
+        $offer = PriceOffer::find($id);
+        $customer = Customers::find($offer->customer_id);
+        $products = explode(',', $offer->products_id);
+        $parts = explode(',', $offer->parts_id);
+        $quantities = explode(',', $offer->quantities);
+        $prices = explode(',', $offer->prices);
+        $discounts = explode(',', $offer->discounts);
+        $drebas = explode(',', $offer->dreba);
+
+        // get previous
+        $previous = PriceOffer::where('id', '<', $offer->id)->where('status', 0)->max('id');
+        // get next
+        $next = PriceOffer::where('id', '>', $offer->id)->where('status', 0)->min('id');
+
+        $allproducts = array();
+        if (count($products) > 0 && $products[0] != null) {
+            foreach ($products as $product) {
+                $single = Products::find($product);
+                array_push($allproducts, $single);
+            }
+        }
+        if (count($parts) > 0 && $parts[0] != null) {
+            foreach ($parts as $part) {
+                $single = Parts::find($part);
+                array_push($allproducts, $single);
+            }
+        }
+
+
+        return view('admin.priceoffer.contract_sale' , compact('offer','offer_number','total_price','percent_format','percent_remainder','word_percent','word_remainder','funds','previous','next','offer','allproducts','quantities','prices','discounts','drebas','customer','category_name','fund_date_start','fund_date_end'));
     }
 }

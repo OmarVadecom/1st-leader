@@ -101,56 +101,147 @@
         <div class="row">
             <div class="title">
                 <h2>إتفاقية بيع معدات بالاجل - مقسطة على دفعات</h2>
-                <h4> رقم العميل <span></span></h4>
+                <h4> رقم العميل <span style="font-weight: bold">
+                    <?php if($offer->customer->segl_number): ?>
+                        <?php echo e($offer->customer->segl_number); ?>
+
+
+                        <?php endif; ?>
+                    </span></h4>
             </div>
             <div class="content">
                 <label class="font-weight-bold">لقد تم الاتفاق بين كل من شركة القائد الاول للمعدات الصناعية طرف اول و السيد / </label>
-                <span><?php echo e($offer->customer->name); ?></span>
-                <br>
-                <label> طرف ثاني و عنوانه :</label> <span> <?php echo e($offer->customer->country); ?> </span>
-                <label>&ensp; ص.ب : </label> <span> <?php echo e($offer->customer->street); ?> </span>
-                <label >&ensp;بمدينة : </label> <span> <?php echo e($offer->customer->reg_city); ?></span>
-                <br>
-                <label >&ensp;الرمز البريدي : </label><span> <?php echo e($offer->customer->reg_city); ?> </span>
-                <label >&ensp;تليفون : </label><span> <?php echo e($offer->customer->resp_phone); ?></span>
-                <label >&ensp;رقم الهوية : </label><span> <?php echo e($offer->customer->dreb_phone); ?></span>
-                <label >&ensp;تاريخ : </label><span> <?php echo e($offer->date); ?></span>
-                <br>
-                <label >&ensp;بكفالة السيد : </label><span> <?php echo e($offer->resp_name_sponsor); ?></span>
+                <span style="font-weight: bold">
 
-                <label >و عنوانه</label> <span>..........</span>
+                    <?php if($offer->customer->name): ?>
+                        <?php echo e($offer->customer->name); ?>
+
+                    <?php else: ?>
+                        ...........
+                    <?php endif; ?>
+                </span>
                 <br>
-                <label >ص.ب</label> <span>..........</span>
-                <label >رقم الهوية</label><span>..........</span>
-                <label >تاريخ</label><span>..........</span>
-                <br>
-                <label class="font-weight-bold"> أولا : قبل الطرف الاول ان يبيع للطرف الثاني معدات من نوع</label>
-                <span>
+                <label> طرف ثاني و عنوانه :</label> <span style="font-weight: bold">
+
+                    <?php echo e($offer->customer->street); ?> - <?php echo e($offer->customer->reg_city); ?> - <?php echo e($offer->customer->country); ?></span>
+                <label>&ensp; ص.ب : </label> <span style="font-weight: bold"> .......... </span>
+                <label >&ensp;بمدينة : </label> <span style="font-weight: bold">
+                     <?php if($offer->customer->reg_city): ?>
+                        <?php echo e($offer->customer->reg_city); ?>
+
+                    <?php else: ?>
+                        ...........
+                    <?php endif; ?>
 
                 </span>
                 <br>
-                <label >&ensp;  فاتورة معمدة رقم</label> <span> <?php echo e($offer_number); ?> </span>
+                <label >&ensp;الرمز البريدي : </label><span> ......... </span>
+                <label >&ensp;تليفون : </label><span style="font-weight: bold">
+                     <?php if($offer->customer->resp_phone): ?>
+                        <?php echo e($offer->customer->resp_phone); ?>
+
+                    <?php else: ?>
+                        ...........
+                    <?php endif; ?>
+
+                </span>
+                <label >&ensp;رقم الهوية : </label><span style="font-weight: bold">
+
+                    <?php if($offer->customer->dreb_number): ?>
+                        <?php echo e($offer->customer->dreb_number); ?>
+
+                    <?php else: ?>
+                        ...........
+                    <?php endif; ?>
+                </span>
+                <label >&ensp;تاريخ : </label><span style="font-weight: bold">
+                      <?php if($offer->date): ?>
+                        <?php echo e($offer->date); ?>
+
+                    <?php else: ?>
+                        ...........
+                    <?php endif; ?>
+                </span>
                 <br>
-                <label >&ensp; مسجلة يتاريخ : </label><span> <?php echo e($offer->date); ?></span>
-                <label >&ensp;  بمبلغ إجمالي : </label><span> <?php echo e($total_price); ?></span>
+                <label >&ensp;بكفالة السيد : </label><span style="font-weight: bold">
+
+                    <?php if($offer->customer->resp_name_sponsor): ?>
+                        <?php echo e($offer->customer->resp_name_sponsor); ?>
+
+                    <?php else: ?>
+                        ...........
+                    <?php endif; ?>
+                </span>
+
+                <label >و عنوانه</label> <span style="font-weight: bold">
+                     <?php if($offer->customer->resp_city_sponsor): ?>
+                        <?php echo e($offer->customer->resp_city_sponsor); ?>
+
+                    <?php else: ?>
+                        ...........
+                    <?php endif; ?>
+                    </span>
+                <br>
+                <label >ص.ب</label> <span style="font-weight: bold">
+                      <?php if($offer->customer->resp_mail_box_sponsor): ?>
+                        <?php echo e($offer->customer->resp_mail_box_sponsor); ?>
+
+                    <?php else: ?>
+                        ...........
+                    <?php endif; ?>
+
+                </span>
+                <label >رقم الهوية</label >
+                <span style="font-weight: bold">
+                      <?php if($offer->customer->resp_id_number_sponsor): ?>
+                        <?php echo e($offer->customer->resp_id_number_sponsor); ?>
+
+                    <?php else: ?>
+                        ...........
+                    <?php endif; ?>
+                </span>
+                <label >تاريخ</label><span style="font-weight: bold">
+                      <?php if($offer->customer->created_at): ?>
+                      <?php echo e(date('d-m-Y', strtotime($offer->customer->created_at))); ?>
+
+                    <?php else: ?>
+                        ...........
+                    <?php endif; ?>
+                </span>
+                <br>
+                <label class="font-weight-bold"> أولا : قبل الطرف الاول ان يبيع للطرف الثاني معدات من نوع</label>
+                <span style="font-weight: bold">
+                 <?php if($category_name): ?>
+                       <?php echo e($category_name); ?>
+
+                    <?php else: ?>
+                    ...............
+                     <?php endif; ?>
+                </span>
+                <br>
+                <label >&ensp;  فاتورة معمدة رقم</label> <span style="font-weight: bold"> <?php echo e($offer_number); ?> </span>
+                <br>
+                <label >&ensp; مسجلة يتاريخ : </label><span style="font-weight: bold"> <?php echo e($offer->date); ?></span>
+                <label >&ensp;  بمبلغ إجمالي : </label><span style="font-weight: bold"> <?php echo e($total_price); ?></span>
 
                 <br>
                 <label > فقط على أن يدفع الطرف الثاني للطرف الاول 35 %من اصل القيمة كدفعة أولى مبلغ وقدره</label>
-                <span> <?php echo e($percent_format); ?></span>
+                <span style="font-weight: bold"> <?php echo e($percent_format); ?></span>
                 <br>
-                <label >وقدره كتابة :</label><span> <?php echo e($word_percent); ?></span> <!--there is concatenation here +    ريال سعودي لاغير  -->
+                <label >وقدره كتابة :</label><span style="font-weight: bold"> <?php echo e($word_percent); ?></span> <!--there is concatenation here +    ريال سعودي لاغير  -->
                 <br>
-                <label > بموجب سند الوارد رقم </label><span>..........</span>
-                <label >تاريخ</label><span>..........</span>
-                <label > و الباقي بذمة الطرف الثاني للطرف الاول المبلغ المتبقي من العرض و قدره رقما</label><span> <?php echo e($percent_remainder); ?></span>
+                <label > بموجب سند الوارد رقم </label><span style="font-weight: bold">..........</span>
+                <label >تاريخ</label><span style="font-weight: bold">..........</span>
+                <label > و الباقي بذمة الطرف الثاني للطرف الاول المبلغ المتبقي من العرض و قدره رقما</label><span style="font-weight: bold"> <?php echo e($percent_remainder); ?></span>
                 <br>
-                <label > و قدره كتابة : </label><span> <?php echo e($word_remainder); ?></span><!--there is concatenation here +    ريال الغير  -->
+                <label > و قدره كتابة : </label><span style="font-weight: bold"> <?php echo e($word_remainder); ?></span><!--there is concatenation here +    ريال الغير  -->
                 <br>
                 <label >على أن يقسط الباقي على الطرف الثاني بموجب كمبيالات تدفع شهريا بموجب البيان التالي :</label>
                 <br>
-                <label class="pay">علي (<span></span> ) دفع مالية شهريا لمدة (<span></span> )  سنة</label>
-                <label class="pay">من تاريخ / <span></span> </label>
-                <label class="pay"> الي تاريخ / <span></span> </label>
+                <label class="pay">علي (<span style="font-weight: bold"></span> ) دفع مالية شهريا لمدة (<span></span> )  سنة</label>
+
+                <label class="pay"> من تاريخ /<span style="font-weight: bold"></span> <?php echo e($fund_date_start->date_from); ?> </label>
+                <label class="pay"> الي تاريخ / <span style="font-weight: bold"><?php echo e($fund_date_start->date_from); ?></span> </label>
             </div>
         </div>
 
@@ -184,17 +275,244 @@
                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                 </tbody>
             </table>
-        </div>
 
+
+            <br><br>
+            <div class="row no-gutters" style="margin-top: 40px">
+                <div class="col-md-3">
+                    <div class="row no-gutters">
+                        <h3 class="header-3 p-0">
+                            الرقم الضريبي / <span class="en-font"> <?php echo e(getSettings('site_vat')); ?></span>
+                        </h3>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="row no-gutters">
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="row no-gutters">
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="row no-gutters">
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="row no-gutters">
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+                <div class="col-md-1">
+                    <div class="row no-gutters">
+                        <br>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row no-gutters">
+                <div class="col-md-12 text-center" style="border: 1px solid #ccc">
+                    <h3 class="header-3">
+                        <?php if($offer->type==0): ?>
+                            <?php if($offer->status == 1): ?>
+                                عرض سعر مشتريات
+                            <?php elseif($offer->status == 2): ?>
+                                أمر شراء
+                            <?php elseif($offer->status == 3): ?>
+                                فاتوره شراء
+                            <?php else: ?>
+                                عرض سعر غير معمد
+                            <?php endif; ?>
+                        <?php else: ?>
+                            عرض سعر معمد
+                        <?php endif; ?>
+                    </h3>
+                </div>
+            </div>
+            <div class="row no-gutters" style="border-bottom: 1px solid #ccc;">
+                <?php if($offer->status != 0): ?>
+                    <div class="col-md-3">
+                        <div class="row no-gutters" style="border: 1px solid #ccc; border-bottom: 0px; border-top: 0;">
+                            <div class="d-flex">
+                                <span class="about_prop">السيد :</span>
+                                <span class="about_value"><?php echo e($offer->supplier != '' ? $offer->supplier : 'لا يوجد'); ?></span>
+                            </div>
+                        </div>
+
+                        <div class="row no-gutters" style="border: 1px solid #ccc; border-bottom: 0px;">
+                            <div class="d-flex">
+                                <span class="about_prop">الشركة :</span>
+                                <span class="about_value"><?php echo e($offer->supplier_comp != '' ? $offer->supplier_comp : 'لا يوجد'); ?></span>
+                            </div>
+                        </div>
+                        <div class="row no-gutters" style="border: 1px solid #ccc; border-bottom: 0px;">
+                            <div class="d-flex">
+                                <span class="about_prop">العنوان :</span>
+                                <span class="about_value">لا يوجد</span>
+                            </div>
+                        </div>
+                        <div class="row no-gutters" style="border: 1px solid #ccc; border-bottom: 0px;">
+                            <div class="d-flex">
+                                <span class="about_prop">ايميل :</span>
+                                <span class="about_value">لا يوجد</span>
+                            </div>
+                        </div>
+                        <div class="row no-gutters" style="border: 1px solid #ccc; border-bottom: 0px;">
+                            <div class="d-flex">
+                                <span class="about_prop">رقم الهاتف :</span>
+                                <span class="about_value">لا يوجد</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                <?php else: ?>
+                    <div class="col-md-3">
+                        <div class="row no-gutters" style="border: 1px solid #ccc; border-bottom: 0px;border-top: 0;">
+                            <div class="d-flex">
+                                <span class="about_prop">الشركة :</span>
+                                <span class="about_value"><?php echo e($customer->name != '' ? $customer->name : 'لا يوجد'); ?></span>
+                            </div>
+                        </div>
+                        <div class="row no-gutters" style="border: 1px solid #ccc; border-bottom: 0px;">
+                            <div class="d-flex">
+                                <span class="about_prop">العنوان :</span>
+                                <span class="about_value"><?php echo e($customer->region); ?> - <?php echo e($customer->street); ?></span>
+                            </div>
+                        </div>
+                        <div class="row no-gutters" style="border: 1px solid #ccc; border-bottom: 0px;">
+                            <div class="d-flex">
+                                <span class="about_prop">السيد :</span>
+                                <span class="about_value"><?php echo e($customer->resp_name != '' ? $customer->resp_name : 'لا يوجد'); ?></span>
+                            </div>
+                        </div>
+
+                        <div class="row no-gutters" style="border: 1px solid #ccc; border-bottom: 0px;">
+                            <div class="d-flex">
+                                <span class="about_prop">رقم الجوال :</span>
+                                <span class="about_value en-font"><?php echo e($customer->resp_phone != '' ? $customer->resp_phone : 'لا
+                    يوجد'); ?></span>
+                            </div>
+                        </div>
+                        <?php if($customer->resp_email != ""): ?>
+                            <div class="row no-gutters" style="border: 1px solid #ccc; border-bottom: 0px;">
+                                <div class="d-flex">
+                                    <span class="about_prop">ايميل :</span>
+                                    <span class="about_value"><?php echo e($customer->resp_email); ?></span>
+                                </div>
+                            </div>
+                        <?php endif; ?>
+                        <div class="row no-gutters" style="border: 1px solid #ccc; border-bottom: 0px;">
+                            <div class="d-flex">
+                                <span class="about_prop"> الرقم الضريبي :</span>
+                                <span class="about_value en-font"><?php echo e($customer->dreb_number != '' ? $customer->dreb_number : 'لا
+                    يوجد'); ?></span>
+                            </div>
+                        </div>
+
+                    </div>
+                <?php endif; ?>
+                <div class="col-md-6 m-auto">
+
+
+
+
+                </div>
+                <div class="col-md-3">
+                    <div class="row no-gutters">
+                        <div class="col-md-6">
+                            <div class="row no-gutters" style="border: 1px solid #ccc;border-bottom: 0px; border-top: 0;">
+                                <span class="about_prop">التاريخ/ </span>
+                            </div>
+                            <div class="row no-gutters" style="border: 1px solid #ccc;border-bottom: 0px;">
+                                <span class="about_prop">الوقت/ </span>
+                            </div>
+                            <div class="row no-gutters" style="border: 1px solid #ccc;border-bottom: 0px;">
+                                <span class="about_prop">مدة العرض/ </span>
+                            </div>
+                            <div class="row no-gutters" style="border: 1px solid #ccc;border-bottom: 0px;">
+                                <span class="about_prop">رقم العرض/ </span>
+                            </div>
+                            <div class="row no-gutters" style="border: 1px solid #ccc;border-bottom: 0px;">
+                                <span class="about_prop">رقم الحساب/</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="row no-gutters"
+                                 style="border: 1px solid #ccc;border-bottom: 0px; border-top: 0; border-right: 0; ">
+                                <span class=" about_value en-font"><?php echo e($offer->date); ?></span>
+                            </div>
+                            <div class="row no-gutters " style="border: 1px solid #ccc;border-bottom: 0px; border-right: 0; ">
+                                <span class="about_value en-font"><?php echo e($offer->time); ?></span>
+                            </div>
+                            <div class="row no-gutters " style="border: 1px solid #ccc;border-bottom: 0px; border-right: 0; ">
+                                <span class="about_value "><?php echo e($offer->offer_duration); ?></span>
+                            </div>
+                            <div class="row no-gutters " style="border: 1px solid #ccc;border-bottom: 0px; border-right: 0; ">
+                    <span class="about_value en-font">
+                        <?php if($offer->status != 0): ?>
+                            <?php
+                                if($offer->status == 1){
+                                    echo 'PPO-' . substr($this['created_at']->format('Y'), -2) . '-' . '-' . str_pad(request('invoice_num'), 4, '0', STR_PAD_LEFT);
+                                }elseif ($offer->status == 2){
+                                    echo 'PO-' . substr($this['created_at']->format('Y'), -2) . '-' . '-' . str_pad(request('invoice_num'), 4, '0', STR_PAD_LEFT);
+                                }elseif ($offer->status == 3){
+                                    echo 'PUR-' . substr($this['created_at']->format('Y'), -2) . '-' . str_pad(request('invoice_num'), 4, '0', STR_PAD_LEFT);
+                                }
+                            ?>
+                        <?php else: ?>
+                            <?php echo e($offer->code . '-' . str_pad(request('invoice_num'), 4, '0', STR_PAD_LEFT)); ?>
+
+                        <?php endif; ?>
+                    </span>
+                            </div>
+                            <div class="row no-gutters " style="border: 1px solid #ccc;border-bottom: 0px; border-right: 0; ">
+                                <span class="about_value en-font"><?php echo e(isset($customer) ? $customer->code : ''); ?></span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <?php
+                $sell_show=true;
+                $items=$allproducts;
+                $quantities=$quantities;
+                $prices=$prices;
+                $discounts=$discounts;
+                $addon_disc=$offer->addon_disc;
+            ?>
+            <?php echo $__env->make('admin.layouts.show_product_table', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
+        </div>
         <div class="row">
             <div class="second-content">
                 <label>   <span class="font-weight-bold">ثانيا</span> : قدم الطرف الثاني للطرف الاول كفالة غرم وأداءوتضامن مقدمة من</label>
-                <span><?php echo e($offer->resp_name_sponsor); ?></span>
+                <span style="font-weight: bold">
+
+                <?php if($offer->resp_name_sponsor): ?>
+                        <?php echo e($offer->resp_name_sponsor); ?>
+
+                    <?php else: ?>
+                    ...........
+                    <?php endif; ?>
+                </span>
                 <br>
                 <label >برقم خطاب كفالة غرم رقم ............ و تاريخ
-                    <span>day </span> /
-                    <span> month </span> /
-                    <span> year </span>  يتعهد الكفيل الغارم بموجبه
+                     يتعهد الكفيل الغارم بموجبه
                 </label>
                 <br>
                 <label>   <span class="font-weight-bold">ثالثا</span> : يقر الطرف الثاني بأنه استلم المعدات موضوع البيع بحالة سليمة و خلية من أي عيوب و انه قد عاينها المعاينة التامة النافية للجهالة . </label>
@@ -224,30 +542,35 @@
                 </label>
                 <br>
                 <label>حررت هذه الاتفاقية بتاريخ
-                    <span>day </span> /
-                    <span> month </span> /
-                    <span> year </span>
                 </label>
-                <label>14 هـ في مدينة <span>........</span></label>
+                <label>14 هـ في مدينة <span style="font-weight: bold">........</span></label>
                 <br><br>
                 <div class="d-flex justify-content-around">
                     <div>
                     <label >طرف أول  (بائع)  </label>
-                    <br><span>sign</span>
+
                     </div>
                     <div>
                         <label >طرف ثاني  (بائع)  </label>
-                        <br><span>sign</span>
+
                     </div>
                     <div>
                         <label >كفيل الطرف الثاني  (الضامن)  </label>
-                        <br><span>sign</span>
+
                     </div>
                 </div>
             </div>
         </div>
         <br>
-        <center style="margin-bottom: 10px"> <i class="fa fa-print fa-2x "></i> <a href="javascript:window.print();" class="btn btn-primary" style="border-radius: 15px"><h1>Print Page</h1>  </a></center>
+        <center style="margin-bottom: 10px"> <button id="printPageButton" onClick="window.print();" class="btn-success">Print <i class="fa fa-print fa-2x "></i></button>
+           </center>
+        <style>
+            @media  print {
+                #printPageButton {
+                    display: none;
+                }
+            }
+        </style>
     </div>
 </body>
 </html>
