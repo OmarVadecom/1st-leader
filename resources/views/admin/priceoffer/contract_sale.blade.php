@@ -537,11 +537,11 @@
 
                     </div>
                     <div>
-                        <label >طرف ثاني  (بائع)  </label>
+                        <label >طرف ثاني  (مشتري)  </label>
 
                     </div>
                     <div>
-                        <label >كفيل الطرف الثاني  (الضامن)  </label>
+                        <label >كفيل الطرف الثاني  (كفيل)  </label>
 
                     </div>
                 </div>
