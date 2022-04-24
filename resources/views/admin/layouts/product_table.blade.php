@@ -51,7 +51,7 @@
                         <td class="totals total{{$k}}"><input id="total_input" type="number" step="any"
                                                               data-number="{{$k}}"
                                                               name="totals[]"
-                                                              value="{{ round($total_after_disc + $dreba,2) }}"
+                                                              value="{{ round($total_after_disc + $dreba) }}"
                                                               class="totalinp{{$k}} form-control totalinp">
                         </td>
                         <td><i data-rownumber="{{$k}}" class="fa fa-times clickremrow"></i></td>
