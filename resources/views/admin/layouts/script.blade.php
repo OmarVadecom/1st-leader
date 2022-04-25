@@ -246,7 +246,7 @@
           $("#startpaymentvalue").keyup(function(){
               price=$("#total_price").val();
               value=$(this).val();
-              $("#startpayment").val(Math.round((value/price)*100));
+              $("#startpayment").val(Math.round((value/price)*100,2));
           })
 
 
